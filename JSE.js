@@ -12,29 +12,30 @@ let students = [];
 
     function editStudent(index) {
         const student = students[index];
+		        const name = prompt("Enter the updated name:", student.name);
+
         const studentNumber = prompt("Enter the updated student number:", student.studentNumber);
         const address = prompt("Enter the updated address:", student.address);
-        const name = prompt("Enter the updated name:", student.name);
 
-        if (!studentNumber || !address || !name) {
+        if ( !name || !studentNumber || !address) {
             alert("Please fill in all fields before editing the student.");
             return;
         }
 
-        students[index] = { studentNumber, address, name };
+        students[index] = { name, studentNumber, address };
 
         const tableBody = document.querySelector("#studentTableBody");
         const row = tableBody.rows[index];
-        row.cells[0].textContent = studentNumber;
-        row.cells[1].textContent = address;
-        row.cells[2].textContent = name;
+		row.cells[0].textContent = name;
+        row.cells[1].textContent = studentNumber;
+        row.cells[2].textContent = address;
         alert("Student edited successfully.");
     }
 
     function addStudent() {
+		const name = document.getElementById("name").value;
         const studentNumber = document.getElementById("studentNumber").value;
         const address = document.getElementById("address").value;
-        const name = document.getElementById("name").value;
 
         if (!studentNumber || !address || !name) {
             alert("Failed to add student. Please fill in all fields.");
@@ -51,9 +52,9 @@ let students = [];
         const cell4 = row.insertCell();
         const cell5 = row.insertCell();
 
-        cell1.textContent = studentNumber;
-        cell2.textContent = address;
-        cell3.textContent = name;
+		cell1.textContent = name;
+        cell2.textContent = studentNumber;
+        cell3.textContent = address;
         cell4.innerHTML = `<button class="btn btn-primary btn-edit" onclick="editStudent(${students.length - 1})">Edit</button>`;
         cell5.innerHTML = `<button class="btn btn-danger btn-delete" onclick="deleteStudent(${students.length - 1})">Delete</button>`;
 
