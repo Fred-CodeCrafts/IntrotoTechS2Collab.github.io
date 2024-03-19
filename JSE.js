@@ -9,36 +9,36 @@ function deleteStudent(index) {
 
 function editStudent(index) {
     document.getElementById("box").classList.remove("hidden");
-    
-    const student = students[index];
-    
-    document.getElementById("name").value = student.name;
-	document.getElementById("address").value = student.address;
-    document.getElementById("studentNumber").value = student.studentNumber;
-    
-    const saveButton = document.getElementById("saveButton");
-    saveButton.setAttribute("onclick", `saveData(${index})`);
-}
 
+    const student = students[index];
+
+    document.getElementById("nameTemp").value = student.name;
+    document.getElementById("addressTemp").value = student.address;
+    document.getElementById("studentNumberTemp").value = student.studentNumber;
+
+    const saveButton = document.getElementById("saveButton");
+    saveButton.addEventListener("click", function() {
+        saveData(index);
+    });
+}
 
 function saveData(index) {
     const name = document.getElementById("nameTemp").value;
-    const studentNumber = document.getElementById("studentNumber").value;
-    const address = document.getElementById("address").value;
+	const address = document.getElementById("addressTemp").value;
+    const studentNumber = document.getElementById("studentNumberTemp").value;
 
     students[index] = { name, address, studentNumber };
 
     const tableBody = document.querySelector("#studentTableBody");
     const row = tableBody.rows[index];
     row.cells[0].textContent = name;
-    row.cells[1].textContent = studentNumber;
-    row.cells[2].textContent = address;
+	row.cells[1].textContent = address;
+    row.cells[2].textContent = studentNumber;
 
     showEditAlert();
 
     closeForm();
 }
-
 
 function closeForm() {
     document.getElementById("box").classList.add("hidden");
