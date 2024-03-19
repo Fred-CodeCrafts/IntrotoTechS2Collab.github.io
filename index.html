@@ -6,13 +6,10 @@
     <link rel="stylesheet" href="myStyleE.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3s4Wz6iJgD/+ub2oU" crossorigin="anonymous">
     <style>
-       
     </style>
 </head>
 <body>
-
 <div class="container mt-5">
-
     <h1 class="text-center mb-4">Student Information</h1>
     <form id="studentForm">
         <div class="mb-3">
@@ -29,22 +26,68 @@
         </div>
         <button type="button" class="btn btn-primary btn-add" onclick="addStudent()">Add Student</button>
     </form>
-
     <table class="table mt-4">
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Student Number</th>
-            <th>Address</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
+            <tr>
+                <th>Name</th>
+                <th>Student Number</th>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
         </thead>
-        <tbody id="studentTableBody"></tbody>
+        <tbody id="studentTableBody">
+			
+        </tbody>
     </table>
 </div>
+<div id="box" class="hidden">
+    <form id="editForm">
+        <div class="title-bar">
+            <span>Edit Data</span>
+            <button type="button" class="btn btn-close" onclick="closeForm()">X</button>
+        </div>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="studentNumber" placeholder="Student Number">
+        <button type="button" class="btn btn-save" onclick="saveData()">Save</button>
+    </form>
+</div>
+<div id="deleteAlert" class="alert delete-alert">
+    <span class="close" onclick="closeDeleteAlert()">&times;</span>
+    <div class="alert-content">
+         <h2>Deleted!</h2>
+        <p>Student has been Erased successfully.</p>
+    </div>
+</div>
+<div id="successAlert" class="alert success-alert">
+    <span class="close" onclick="closeSuccessAlert()">&times;</span>
+    <div class="alert-content">
+        <h2>Success!!!</h2>
+        <p>New student added successfully</p>
+    </div>
+</div>
 
-<script src="JSE.js"> </script>
+<div id="failureAlert" class="alert failure-alert">
+    <span class="close" onclick="closeFailureAlert()">&times;</span>
+    <div class="alert-content">
+		<h2>Failure</h2>
+        <p>Please fill in all fields before continuing.</p>
+    </div>
+</div>
+<div id="editAlert" class="alert edit-alert">
+    <span class="close" onclick="closeEditAlert()">&times;</span>
+    <div class="alert-content">
+        <h2>Edit Successful!</h2>
+        <p>Student details updated successfully.</p>
+    </div>
+</div>
+
+
+<script src="JSE.js"></script>
+<script>
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBud7RduPuemT//+jJXB16zg6i8UQD3lV5uDC3Yc7bz1Eeow" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 </body>
