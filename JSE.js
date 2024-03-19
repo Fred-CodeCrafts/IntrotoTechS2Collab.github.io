@@ -13,8 +13,8 @@ function editStudent(index) {
     const student = students[index];
 
     document.getElementById("nameTemp").value = student.name;
+	document.getElementById("studentNumberTemp").value = student.studentNumber;
     document.getElementById("addressTemp").value = student.address;
-    document.getElementById("studentNumberTemp").value = student.studentNumber;
 
     const saveButton = document.getElementById("saveButton");
     saveButton.addEventListener("click", function() {
@@ -24,16 +24,16 @@ function editStudent(index) {
 
 function saveData(index) {
     const name = document.getElementById("nameTemp").value;
+	const studentNumber = document.getElementById("studentNumberTemp").value;
 	const address = document.getElementById("addressTemp").value;
-    const studentNumber = document.getElementById("studentNumberTemp").value;
 
-    students[index] = { name, address, studentNumber };
+    students[index] = { name, studentNumber, address };
 
     const tableBody = document.querySelector("#studentTableBody");
     const row = tableBody.rows[index];
     row.cells[0].textContent = name;
-	row.cells[1].textContent = address;
-    row.cells[2].textContent = studentNumber;
+	row.cells[1].textContent = studentNumber;
+	row.cells[2].textContent = address;
 
     showEditAlert();
 
